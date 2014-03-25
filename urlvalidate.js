@@ -47,7 +47,6 @@ ValidateURI.prototype.headURI = function(uri) {
            error: function( jqXHR, textStatus, errorThrown ) {
               console.log('fooked up') ;
            },
-//success: this.URIsuccessCB
 		   success: function(message,text,response){
                        if (message.status == 200) {
                          $(this.msgID).html("URI is fine") ;
