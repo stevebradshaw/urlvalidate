@@ -30,3 +30,11 @@ In your javascript
    URLtest2 = new ValidateURL($('#url_2') , $('#url_status_2'), $('#url_img_2')) ;
    URLtest2.validate() ;
 ```
+
+Comes with a couple of images that are used by default, but these can be overidden using the setOKImg/setERRImg functions
+
+## Further Enhancements
+
+* Specify CSS to apply to input when it passes/fails validation
+* Allow message and iamge to be blanked
+* Skip validation when input is empty - blank out message and image?
