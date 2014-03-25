@@ -1,5 +1,5 @@
-function ValidateURI(URIinput, msgSpan, imgBox) {
-  this.uriID = URIinput ;
+function ValidateURL(URLinput, msgSpan, imgBox) {
+  this.urlID = URLinput ;
   this.msgID = msgSpan ;
   this.imgID = imgBox ;
   this.OKImg = 'tick.png' ;
@@ -7,26 +7,26 @@ function ValidateURI(URIinput, msgSpan, imgBox) {
   this.ClearImg = '' ;
 
   // bind to input - first param to $.proxy is function to call, second is the context
-  $(this.uriID).bind('blur', $.proxy(this.validate, this)) ;
+  $(this.urlID).bind('blur', $.proxy(this.validate, this)) ;
 }
 
-ValidateURI.prototype.setOKImg = function(img) {
+ValidateURL.prototype.setOKImg = function(img) {
   this.OKImg = img ;
 }
 
-ValidateURI.prototype.setERRImg = function(img) {
+ValidateURL.prototype.setERRImg = function(img) {
   this.ERRImg = img ;
 }
 
-ValidateURI.prototype.setOKImg = function(img) {
+ValidateURL.prototype.setOKImg = function(img) {
   this.ClearImg = img ;
 }
 
-ValidateURI.prototype.validURIRegex = function(uri) {
-  return /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(uri);
+ValidateURL.prototype.validURLRegex = function(url) {
+  return /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/.test(url);
 }
 
-ValidateURI.prototype.setStatusImage = function(status) {
+ValidateURL.prototype.setStatusImage = function(status) {
   if (status == "OK") {
     // set ok image
     $(this.imgID).attr('src', this.OKImg) ;
@@ -38,37 +38,37 @@ ValidateURI.prototype.setStatusImage = function(status) {
   }
 }
 
-ValidateURI.prototype.headURI = function(uri) {
+ValidateURL.prototype.headURL = function(url) {
   $.ajax({ type: "GET",
 		   async: true,
            context: this,
-		   url: 'validate.php?uri=' + escape(uri),
+		   url: 'validate.php?url=' + escape(url),
            dataType:'json',
            error: function( jqXHR, textStatus, errorThrown ) {
               console.log('fooked up') ;
            },
 		   success: function(message,text,response){
                        if (message.status == 200) {
-                         $(this.msgID).html("URI is fine") ;
+                         $(this.msgID).html("URL is fine") ;
                          this.setStatusImage('OK') ;
                        } else {
-                         $(this.msgID).html("URI is invalid") ;
+                         $(this.msgID).html("URL is invalid") ;
                          this.setStatusImage('ERR') ;
                        }
                      }
   });
 }
 
-ValidateURI.prototype.validate = function () {
-  uri = $(this.uriID).val() ;
+ValidateURL.prototype.validate = function () {
+  url = $(this.urlID).val() ;
 
-  if (this.validURIRegex(uri)) {
+  if (this.validURLRegex(url)) {
     // passes regex test so try and 'HEAD' it to make sure there is a resource
-    $(this.msgID).html("URI passes REGEX check") ;
-    this.headURI(uri) ;
+    $(this.msgID).html("URL passes REGEX check") ;
+    this.headURL(url) ;
   } else { 
     // fails regex test
-    $(this.msgID).html("Invalid URI - REGEX check") ;
+    $(this.msgID).html("Invalid URL - REGEX check") ;
     this.setStatusImage('ERR') ;
   }
 }

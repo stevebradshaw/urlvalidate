@@ -6,30 +6,29 @@
 <script type="text/javascript">
 
 
-var URItest1, URItest2 ; 
+var URLtest1, URLtest2 ; 
 
 
 $(document).ready(function() {
 
-  //var URItest = new ValidateURI($('#uri') , $('#input_status')) ;
-  URItest1 = new ValidateURI($('#uri_1') , $('#uri_status_1'), $('#uri_img_1')) ;
-  URItest1.validate() ;
-  URItest2 = new ValidateURI($('#uri_2') , $('#uri_status_2'), $('#uri_img_2')) ;
-  URItest2.validate() ;
+  URLtest1 = new ValidateURL($('#url_1') , $('#url_status_1'), $('#url_img_1')) ;
+  URLtest1.validate() ;
+  URLtest2 = new ValidateURL($('#url_2') , $('#url_status_2'), $('#url_img_2')) ;
+  URLtest2.validate() ;
 
 }) ;
 </script>
 </head>
 
 <body>
-<div style="background-color:#ddffff; padding:10px;margin:10px"><input id="uri_1" size=100 value="http://stackoverflow.com/questions/8667070/javascript-regular-expression-to-validate-url" />
-<img id="uri_img_1" style='width:24px; height:24px; border-style:none;' src='data:image/gif;    base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D' />
-<br/><span id="uri_status_1" style="font-size:60%;float:left;"></span>
+<div style="background-color:#ddffff; padding:10px;margin:10px"><input id="url_1" size=100 value="http://stackoverflow.com/questions/8667070/javascript-regular-expression-to-validate-url" />
+<img id="url_img_1" style='width:24px; height:24px; border-style:none;' src='data:image/gif;    base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D' />
+<br/><span id="url_status_1" style="font-size:60%;float:left;"></span>
 </div>
 <div style="background-color:#ffddff; padding:10px;margin:10px;">
-  <input id="uri_2" size=100 value="htt://stackoverflow.com/questions/8667070/javascript-regular-expression-to-validate-url" />
-<img id="uri_img_2" style='width:24px; height:24px; border-style:none;' src='data:image/gif; base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D' />
-  <br/><span id="uri_status_2" style="font-size:60%;float:left;"></span>
+  <input id="url_2" size=100 value="htt://stackoverflow.com/questions/8667070/javascript-regular-expression-to-validate-url" />
+<img id="url_img_2" style='width:24px; height:24px; border-style:none;' src='data:image/gif; base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D' />
+  <br/><span id="url_status_2" style="font-size:60%;float:left;"></span>
 </div>
 </body>
 </html>
